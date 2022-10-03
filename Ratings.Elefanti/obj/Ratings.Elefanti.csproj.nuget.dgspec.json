@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti\\Ratings.Elefanti.csproj": {}
+    "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti\\Ratings.Elefanti.csproj": {
+    "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti\\Ratings.Elefanti.csproj",
+        "projectUniqueName": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti.csproj",
         "projectName": "Ratings.Elefanti",
-        "projectPath": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti\\Ratings.Elefanti.csproj",
+        "projectPath": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti.csproj",
         "packagesPath": "C:\\Users\\rinor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti\\obj\\",
+        "outputPath": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

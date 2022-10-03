@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uGbExp6a6/36BWnErv6mSD95iZdIXfJESaVarCSxOCXXmw/j4/2xRYviCzFDbQyeagub37tx0Ha7QqGhrxBTPQ==",
+  "dgSpecHash": "zpTL1LEIZQhAIeis5HY/1Y/FHBohkOCHrjnCegMFeGmA0PzfzsM0oFiWwMsh55kP0KwPXotrtXQbHKk+lAbPQw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti\\Ratings.Elefanti.csproj",
+  "projectFilePath": "C:\\Users\\rinor\\OneDrive\\Desktop\\Periudha II\\Projekti\\MovieRating\\BackEnd\\Ratings.Elefanti\\Ratings.Elefanti.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rinor\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\rinor\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

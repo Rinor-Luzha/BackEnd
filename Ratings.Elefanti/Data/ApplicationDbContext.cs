@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Ratings.Elefanti.Models;
 
 namespace Ratings.Elefanti.Data;
 public class ApplicationDbContext : DbContext { 
@@ -8,6 +7,5 @@ public class ApplicationDbContext : DbContext {
     {
 
     }
-    public DbSet<User> Users { get; set; }
 
 }
