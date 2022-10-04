@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Ratings.Elefanti.Data;
+using Ratings.Elefanti.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
         builder.Configuration.GetConnectionString("DefaultConnection")
 ));
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<JwtService>();
+
+
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddCors(options =>
@@ -22,7 +27,7 @@ builder.Services.AddCors(options =>
 
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+        builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
     });
 });
 
@@ -39,10 +44,10 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseCors();
 app.UseRouting();
+app.UseCors();
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

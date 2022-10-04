@@ -1,4 +1,6 @@
-﻿namespace Ratings.Elefanti.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Ratings.Elefanti.Models
 {
     public class User
     {
@@ -7,7 +9,7 @@
         public string Surname { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
-
+        [JsonIgnore]
         public string PasswordHash { get; set; }
     }
 }

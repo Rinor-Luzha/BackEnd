@@ -1,15 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Ratings.Elefanti.Data;
+using Ratings.Elefanti.Models;
 
 namespace Ratings.Elefanti.Controllers
 {
     [ApiController]
-    [Route("/api")]
+    [Route("/movies")]
     public class HomeController : Controller
     {
-        [HttpGet]
-        public IActionResult Index()
+        private readonly ApplicationDbContext _db;
+        private readonly IUserRepository _userRepository;
+        public HomeController(ApplicationDbContext db,IUserRepository UserRepository)
         {
-            return Ok();
+            _db = db;
+            _userRepository = UserRepository;
+        }
+        [HttpGet]
+        public IActionResult GetMovies()
+        {
+            List<Movie> Movies = _db.Movies.ToList<Movie>();
+            return Ok(Movies);
         }
     }
 }

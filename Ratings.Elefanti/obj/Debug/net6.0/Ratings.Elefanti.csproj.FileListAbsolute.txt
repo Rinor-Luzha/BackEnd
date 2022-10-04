@@ -162,3 +162,5 @@ C:\Users\rinor\OneDrive\Desktop\Periudha II\Projekti\MovieRating\BackEnd\Ratings
 C:\Users\rinor\OneDrive\Desktop\Periudha II\Projekti\MovieRating\BackEnd\Ratings.Elefanti\obj\Debug\net6.0\Ratings.Elefanti.csproj.CopyComplete
 C:\Users\rinor\OneDrive\Desktop\Periudha II\Projekti\MovieRating\BackEnd\Ratings.Elefanti\obj\Debug\net6.0\Ratings.Elefanti.genruntimeconfig.cache
 C:\Users\rinor\OneDrive\Desktop\Periudha II\Projekti\MovieRating\BackEnd\Ratings.Elefanti\obj\Debug\net6.0\ref\Ratings.Elefanti.dll
+C:\Users\rinor\OneDrive\Desktop\Periudha II\Projekti\MovieRating\BackEnd\Ratings.Elefanti\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\rinor\OneDrive\Desktop\Periudha II\Projekti\MovieRating\BackEnd\Ratings.Elefanti\bin\Debug\net6.0\BCrypt.Net-Next.dll

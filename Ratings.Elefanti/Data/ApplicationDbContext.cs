@@ -23,4 +23,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<MovieDirector> MovieDirectors { get; set; }
 
     public DbSet<MovieWriter> MovieWriters { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>(entity => { entity.HasIndex(e => e.Email).IsUnique(); });
+    }
 }
