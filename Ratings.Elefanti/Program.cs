@@ -19,6 +19,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<JwtService>();
 
 
+
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddCors(options =>

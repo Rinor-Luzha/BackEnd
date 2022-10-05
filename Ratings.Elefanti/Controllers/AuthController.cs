@@ -9,7 +9,7 @@ using Ratings.Elefanti.Models;
 namespace Ratings.Elefanti.Controllers
 {
     [ApiController]
-    [Route("/")]
+    [Route("/account")]
     public class AuthController : Controller
     {
         private readonly IUserRepository _repository;
