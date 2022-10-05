@@ -32,7 +32,8 @@ namespace Ratings.Elefanti.Controllers
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(Dto.Password)
             };
             bool Created = _repository.Create(User);
-            if (Created) {
+            if (Created)
+            {
                 return Ok(new
                 {
                     message = "Success"
@@ -53,7 +54,7 @@ namespace Ratings.Elefanti.Controllers
                 return BadRequest(new { message = "Invalid Credentials" });
 
             }
-            var Jwt = _jwtService.Generate(User.Id);
+            var Jwt = _jwtService.Generate(User.Id, User.Email);
 
             Response.Cookies.Append("jwt", Jwt, new CookieOptions
             {
@@ -62,19 +63,21 @@ namespace Ratings.Elefanti.Controllers
             return Ok(new
             {
                 message = "Success"
-            }) ;
+            });
         }
         //Method used to check if user is logged in
         [HttpGet("user")]
         public IActionResult User()
         {
-            try { 
+            try
+            {
                 var Jwt = Request.Cookies["jwt"];
                 var Token = _jwtService.Verify(Jwt);
-                var UserId = int.Parse(Token.Issuer);
+                var UserId = int.Parse(Token.Claims.ToList()[0].Value);
                 var User = _repository.GetById(UserId);
                 return Ok(User);
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 return Unauthorized();
             }
@@ -86,7 +89,7 @@ namespace Ratings.Elefanti.Controllers
             Response.Cookies.Delete("jwt");
             return Ok(new
             {
-                message="Success"
+                message = "Success"
             });
         }
     }

@@ -12,7 +12,7 @@ namespace Ratings.Elefanti.Controllers
     {
         private readonly ApplicationDbContext _db;
 
-        public HomeController(ApplicationDbContext db, IUserRepository UserRepository, JwtService JwtService)
+        public HomeController(ApplicationDbContext db)
         {
             _db = db;
 
@@ -40,7 +40,8 @@ namespace Ratings.Elefanti.Controllers
                             Length = movies.Length,
                             Title = movies.Title,
                             ReleaseDate = movies.ReleaseDate,
-                            Rating = ratings.RatingNr
+                            Rating = ratings.RatingNr,
+                            Img = movies.Img
                         };
 
             return Ok(Rated);
@@ -55,7 +56,7 @@ namespace Ratings.Elefanti.Controllers
                             from users in _db.Users
                             where users.Id == ratings.User.Id
                             where movies.Id == ratings.Movie.Id
-                            group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate } into grp
+                            group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
                             orderby grp.Key.ReleaseDate descending
                             select new
                             {
@@ -64,6 +65,7 @@ namespace Ratings.Elefanti.Controllers
                                 Length = grp.Key.Length,
                                 Title = grp.Key.Title,
                                 ReleaseDate = grp.Key.ReleaseDate,
+                                Img = grp.Key.Img,
                                 Rating = grp.Average(ratings => ratings.RatingNr)
                             };
 
@@ -79,7 +81,7 @@ namespace Ratings.Elefanti.Controllers
                       from users in _db.Users
                       where users.Id == ratings.User.Id
                       where movies.Id == ratings.Movie.Id
-                      group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate } into grp
+                      group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
                       orderby grp.Average(ratings => ratings.RatingNr) descending
                       select new
                       {
@@ -88,6 +90,7 @@ namespace Ratings.Elefanti.Controllers
                           Length = grp.Key.Length,
                           Title = grp.Key.Title,
                           ReleaseDate = grp.Key.ReleaseDate,
+                          Img = grp.Key.Img,
                           Rating = grp.Average(ratings => ratings.RatingNr)
                       };
 
@@ -138,7 +141,7 @@ namespace Ratings.Elefanti.Controllers
                                   where movieGenres.Genre.Id == genres.Id
                                   where users.Id == ratings.User.Id
                                   where movies.Id == ratings.Movie.Id
-                                  group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate } into grp
+                                  group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
                                   orderby grp.Average(ratings => ratings.RatingNr) descending
                                   select new
                                   {
@@ -147,6 +150,7 @@ namespace Ratings.Elefanti.Controllers
                                       Length = grp.Key.Length,
                                       Title = grp.Key.Title,
                                       ReleaseDate = grp.Key.ReleaseDate,
+                                      Img = grp.Key.Img,
                                       Rating = grp.Average(ratings => ratings.RatingNr)
                                   };
                 return Ok(Recommended);
@@ -181,7 +185,7 @@ namespace Ratings.Elefanti.Controllers
                                   where movieGenres.Genre.Id == genres.Id
                                   where users.Id == ratings.User.Id
                                   where movies.Id == ratings.Movie.Id
-                                  group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate } into grp
+                                  group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
                                   orderby grp.Average(ratings => ratings.RatingNr) descending
                                   select new
                                   {
@@ -190,6 +194,7 @@ namespace Ratings.Elefanti.Controllers
                                       Length = grp.Key.Length,
                                       Title = grp.Key.Title,
                                       ReleaseDate = grp.Key.ReleaseDate,
+                                      Img = grp.Key.Img,
                                       Rating = grp.Average(ratings => ratings.RatingNr)
                                   };
                 return Ok(Recommended);
