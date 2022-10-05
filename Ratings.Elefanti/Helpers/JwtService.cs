@@ -9,34 +9,34 @@ namespace Ratings.Elefanti.Helpers
     public class JwtService
     {
         private string SecureKey = "LIFE Gjirafa Second Phase Project";
-        public string Generate(int Id, string Email)
+        public string Generate(int id, string email)
         {
-            var SymetricKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecureKey));
-            var Credentials = new SigningCredentials(SymetricKey, SecurityAlgorithms.HmacSha256Signature);
-            var Header = new JwtHeader(Credentials);
-            var Claims = new[]
+            var symetricKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecureKey));
+            var credentials = new SigningCredentials(symetricKey, SecurityAlgorithms.HmacSha256Signature);
+            var header = new JwtHeader(credentials);
+            var claims = new[]
             {
-                new Claim("id",Id.ToString()),
-                new Claim("email",Email)
+                new Claim("id",id.ToString()),
+                new Claim("email",email)
 
             };
-            var Payload = new JwtPayload(null, null, Claims, null, DateTime.UtcNow.AddHours(1));
-            var Securitytoken = new JwtSecurityToken(Header, Payload);
+            var payload = new JwtPayload(null, null, claims, null, DateTime.UtcNow.AddHours(1));
+            var securitytoken = new JwtSecurityToken(header, payload);
 
-            return new JwtSecurityTokenHandler().WriteToken(Securitytoken);
+            return new JwtSecurityTokenHandler().WriteToken(securitytoken);
         }
-        public JwtSecurityToken Verify(string Jwt)
+        public JwtSecurityToken Verify(string jwt)
         {
-            var TokenHandler = new JwtSecurityTokenHandler();
-            TokenHandler.ValidateToken(Jwt, new TokenValidationParameters
+            var tokenHandler = new JwtSecurityTokenHandler();
+            tokenHandler.ValidateToken(jwt, new TokenValidationParameters
             {
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SecureKey)),
                 ValidateIssuerSigningKey = true,
                 ValidateIssuer = false,
                 ValidateAudience = false,
-            }, out SecurityToken ValidateToken);
+            }, out SecurityToken validateToken);
 
-            return (JwtSecurityToken)ValidateToken;
+            return (JwtSecurityToken)validateToken;
         }
     }
 }

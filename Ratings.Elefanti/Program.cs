@@ -15,7 +15,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
         builder.Configuration.GetConnectionString("DefaultConnection")
 ));
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<MovieRepository>();
+builder.Services.AddScoped<MovieCommentRepository>();
+builder.Services.AddScoped<RatingRepository>();
 builder.Services.AddScoped<JwtService>();
 
 
