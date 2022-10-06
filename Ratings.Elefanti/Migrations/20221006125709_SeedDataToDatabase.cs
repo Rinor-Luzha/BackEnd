@@ -472,7 +472,7 @@ namespace Ratings.Elefanti.Migrations
                "('Cho','Yeo-jeong','1981-02-10','Actor')");
 
             migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bong','Joon Ho'','1969-09-14','Director')");
+               "('Bong','Joon Ho','1969-09-14','Director')");
 
             migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
                "('Han','Jin-won','1986-01-01','Writer')");

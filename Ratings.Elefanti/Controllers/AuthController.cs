@@ -34,10 +34,7 @@ namespace Ratings.Elefanti.Controllers
             bool created = _repository.Create(user);
             if (created)
             {
-                return Ok(new
-                {
-                    message = "Success"
-                });
+                return Created("Success",user);
             }
             return BadRequest(new { message = "Email Exists" });
         }
@@ -87,10 +84,7 @@ namespace Ratings.Elefanti.Controllers
         public IActionResult Logout()
         {
             Response.Cookies.Delete("jwt");
-            return Ok(new
-            {
-                message = "Success"
-            });
+            return NoContent();
         }
     }
 }

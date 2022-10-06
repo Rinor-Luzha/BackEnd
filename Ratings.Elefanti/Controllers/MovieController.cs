@@ -38,7 +38,6 @@ namespace Ratings.Elefanti.Controllers
                             where users.Id == ratings.User.Id
                             where movies.Id == ratings.Movie.Id
                             group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
-                            orderby grp.Key.ReleaseDate descending
                             select new
                             {
                                 Id = grp.Key.Id,
@@ -156,8 +155,9 @@ namespace Ratings.Elefanti.Controllers
                 });
             }
             // Todo: Add check if this failed
-            _movieCommentRepository.Create(new MovieComment { Movie = movie, User = user, Comment = comment });
-            return Ok();
+            MovieComment movieComment = new MovieComment { Movie = movie, User = user, Comment = comment };
+            _movieCommentRepository.Create(movieComment);
+            return Created("Success",movieComment);
         }
         [HttpPut("comments")]
         public IActionResult ChangeMovieComment(int commentid, string comment)
@@ -191,7 +191,7 @@ namespace Ratings.Elefanti.Controllers
 
             // Todo: Add check if this failed
             _movieCommentRepository.Remove(movieComment);
-            return Ok();
+            return NoContent();
         }
 
         //Get movie comments, post rating, put rating, remove rating.
@@ -218,8 +218,9 @@ namespace Ratings.Elefanti.Controllers
             }
             //Todo: validate rating
             //Todo: Check for failure
-            _ratingRepository.Create(new Rating { Movie = movie, User = user, RatingNr = rating });
-            return Ok();
+            Rating newRating = new Rating { Movie = movie, User = user, RatingNr = rating };
+            _ratingRepository.Create(newRating);
+            return Created("Success",newRating);
         }
 
         [HttpPut("ratings")]
@@ -252,7 +253,7 @@ namespace Ratings.Elefanti.Controllers
             }
             // Todo: Add check if this failed
             _ratingRepository.Remove(rating);
-            return Ok();
+            return NoContent();
         }
     }
 }
