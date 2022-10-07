@@ -690,6 +690,624 @@ namespace Ratings.Elefanti.Migrations
             migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
              "('William','Wisher','1958-09-01','Writer')");
 
+            //Movie Actors
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(1,1,'Andy Dufresne')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(1,2,'Red')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(1,3,'Warden Norton')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(2,4,'Don Vito Corleone')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(2,5,'Michael')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(2,6,'Sonny')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(3,7,'Bruce Wayne Batman')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(3,8,'Joker')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(3,9,'Harvey Dent')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(4,10,'Juror 8')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(4,11,'Juror 3')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(4,12,'Juror 1')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(5,13,'Oskar Schindler')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(5,14,'Amon Goeth')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(5,15,'Itzhak Stern')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(6,16,'Cobb')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(6,17,'Arthur')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(6,18,'Ariadne')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(7,19,'Neo')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(7,20,'Morpheus')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(7,21,'Trinity')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(8,2,'Somerset')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(8,23,'Mills')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(8,24,'John Doe')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(9,25,'George Bailey')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(9,26,'Mary Hatch')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(9,27,'Mr. Potter')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(10,28,'Cooper')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(10,29,'Brand')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(10,30,'Murph')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(11,31,'Ki Taek')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(11,32,'Dong Ik')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(11,33,'Yeon Kyo')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(12,34,'Wladyslaw Szpilman')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(12,35,'Captain Wilm Hosenfeld')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(12,36,'Father')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(13,37,'Ripley')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(13,38,'Corporal Hicks')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(13,39,'Newt')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(14,40,'Dae-su Oh')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(14,41,'Woo-jin Lee')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(14,42,'Mi-do')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(15,43,'Arthur Fleck')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(15,44,'Murray Franklin')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(15,45,'Sophie Dumond')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(16,46,'Miguel')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(16,47,'Héctor')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(16,48,'Ernesto de la Cruz')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(17,49,'Taki Tachibana')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(17,50,'Mitsuha Miyamizu')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(17,51,'Katsuhiko Teshigawara')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(18,52,'Phunsukh Wangdu')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(18,53,'Farhan Qureshi')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(18,54,'Mona Sahastrabuddhe')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(19,55,'Alexander Hamilton')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(19,56,'Eliza Hamilton')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(19,57,'Aaron Burr')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(20,58,'Carl Fredricksen')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(20,59,'Russell')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(20,60,'Construction Foreman Tom')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(21,61,'Ishaan Awasthi')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(21,52,'Ram Shankar Nikumbh')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(21,63,'Maya Awasthi')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(22,64,'The Terminator')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(22,65,'Sarah Connor')");
+
+            migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
+             "(22,66,'Kyle Reese')");
+
+            //Movie Directors
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(1,1)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(2,2)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(3,3)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(4,4)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(5,5)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(6,3)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(7,7)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(7,6)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(8,8)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(9,9)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(10,3)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(11,10)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(12,11)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(13,12)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(14,13)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(15,14)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(16,15)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(16,16)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(17,17)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(18,18)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(19,19)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(20,20)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(20,21)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(21,22)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(21,23)");
+
+            migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
+             "(22,12)");
+
+            //Movie Writers
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(1,1,'Novel writer')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(1,2,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(2,3,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(2,4,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(3,5,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(3,6,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(3,7,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(4,8,'Teleplay Twelve Angry Men')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(5,9,'Book')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(5,10,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(6,6,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(7,11,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(7,12,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(8,13,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(9,14,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(9,15,'ScreenPlay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(9,16,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(10,5,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(10,6,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(11,18,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(11,17,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(12,19,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(12,20,'Book')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(13,21,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(13,22,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(13,23,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(14,24,'Manga')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(14,25,'Manga')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(15,26,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(15,27,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(15,28,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(16,31,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(16,29,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(16,30,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(17,32,'Novel')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(18,33,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(18,34,'Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(18,35,'Screenplay associate')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(19,36,'Book')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(19,37,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(20,38,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(20,39,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(20,40,'Story')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(21,41,'Dialogue and Screenplay')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(22,21,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(22,42,'')");
+
+            migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
+             "(22,43,'Aditional dialogue')");
+
+            //Movie Ratings
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(1,1,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(1,2,10)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(1,5,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(2,4,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(2,2,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(3,6,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(3,3,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(4,9,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(4,8,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(5,7,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(5,9,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(6,11,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(6,13,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(7,11,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(7,8,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(8,6,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(9,12,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(9,8,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(9,10,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(10,5,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(10,8,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(11,6,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(11,4,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(12,8,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(12,14,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(13,8,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(13,9,5)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(14,6,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(15,5,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(15,12,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(16,8,5)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(16,12,4)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(17,10,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(17,6,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(18,11,5)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(18,5,6)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(19,8,7)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(20,9,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(21,10,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(21,6,9)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(22,13,8)");
+
+            migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
+             "(22,6,8)");
+
+            //Movie Comments
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(1,2,'The best of the best 10/10!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(2,3,'Such a good movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(3,5,'An excellent film.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(4,6,'In love with this movie.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(5,8,'Could be better!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(6,10,'Love it!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(7,2,'Disappointed!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(8,12,'Sooo good!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(9,4,'Couldnt wait for it!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(10,14,'Expected more!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(11,9,'Good movie.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(12,2,'Not how I expected!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(13,8,'Such a good movie!!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(14,10,'The best!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(15,5,'The best!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(16,7,' Could be better!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(17,6,'Good movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(18,9,'Such a good movie!!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(19,7,'The bestt!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(20,4,'Just WOW!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(21,1,'The best!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(22,6,'The Terminator is one of the greatest films ever!')");
         }
 
         /// <inheritdoc />
