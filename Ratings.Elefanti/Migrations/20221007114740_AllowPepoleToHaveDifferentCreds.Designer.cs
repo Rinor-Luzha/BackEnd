@@ -12,8 +12,8 @@ using Ratings.Elefanti.Data;
 namespace Ratings.Elefanti.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221006125709_SeedDataToDatabase")]
-    partial class SeedDataToDatabase
+    [Migration("20221007114740_AllowPepoleToHaveDifferentCreds")]
+    partial class AllowPepoleToHaveDifferentCreds
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,10 +212,6 @@ namespace Ratings.Elefanti.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -227,10 +223,6 @@ namespace Ratings.Elefanti.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("People");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Ratings.Elefanti.Models.Rating", b =>
@@ -294,30 +286,9 @@ namespace Ratings.Elefanti.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Ratings.Elefanti.Models.Actor", b =>
-                {
-                    b.HasBaseType("Ratings.Elefanti.Models.Person");
-
-                    b.HasDiscriminator().HasValue("Actor");
-                });
-
-            modelBuilder.Entity("Ratings.Elefanti.Models.Director", b =>
-                {
-                    b.HasBaseType("Ratings.Elefanti.Models.Person");
-
-                    b.HasDiscriminator().HasValue("Director");
-                });
-
-            modelBuilder.Entity("Ratings.Elefanti.Models.Writer", b =>
-                {
-                    b.HasBaseType("Ratings.Elefanti.Models.Person");
-
-                    b.HasDiscriminator().HasValue("Writer");
-                });
-
             modelBuilder.Entity("Ratings.Elefanti.Models.MovieActor", b =>
                 {
-                    b.HasOne("Ratings.Elefanti.Models.Actor", "Actor")
+                    b.HasOne("Ratings.Elefanti.Models.Person", "Actor")
                         .WithMany()
                         .HasForeignKey("ActorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -355,7 +326,7 @@ namespace Ratings.Elefanti.Migrations
 
             modelBuilder.Entity("Ratings.Elefanti.Models.MovieDirector", b =>
                 {
-                    b.HasOne("Ratings.Elefanti.Models.Director", "Director")
+                    b.HasOne("Ratings.Elefanti.Models.Person", "Director")
                         .WithMany()
                         .HasForeignKey("DirectorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -399,7 +370,7 @@ namespace Ratings.Elefanti.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Ratings.Elefanti.Models.Writer", "Writer")
+                    b.HasOne("Ratings.Elefanti.Models.Person", "Writer")
                         .WithMany()
                         .HasForeignKey("WriterId")
                         .OnDelete(DeleteBehavior.Cascade)

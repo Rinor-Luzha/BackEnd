@@ -10,7 +10,28 @@ namespace Ratings.Elefanti.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            // Movies
+            InsertMovies(migrationBuilder);
+
+            InsertGenres(migrationBuilder);
+
+            InsertMovieGenres(migrationBuilder);
+
+            InsertPeople(migrationBuilder);
+
+            InsertMovieActors(migrationBuilder);
+
+            InsertMovieDirectors(migrationBuilder);
+
+            InsertMovieWriters(migrationBuilder);
+
+            InsertMovieRatings(migrationBuilder);
+
+            InsertMovieComments(migrationBuilder);
+        }
+
+
+        private void InsertMovies(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.Sql("INSERT INTO Movies(Title,Description,Length,ReleaseDate,Img) VALUES" +
                 "('The Shawshank Redemption','Andy Dufresne (Tim Robbins) is sentenced to two consecutive life terms in prison for the murders of his wife and her lover and is sentenced to a tough prison. However, only Andy knows he didnt commit the crimes. While there, he forms a friendship with Red (Morgan Freeman), experiences brutality of prison life, adapts, helps the warden, etc., all in 19 years.'," +
                 "'2h 22m','1994-09-22','./img/shawshank.jpg')");
@@ -98,8 +119,9 @@ namespace Ratings.Elefanti.Migrations
             migrationBuilder.Sql("INSERT INTO Movies(Title,Description,Length,ReleaseDate,Img) VALUES" +
           "('The Terminator','Disguised as a human, a cyborg assassin known as a Terminator (Arnold Schwarzenegger) travels from 2029 to 1984 to kill Sarah Connor (Linda Hamilton). Sent to protect Sarah is Kyle Reese (Michael Biehn), who divulges the coming of Skynet, an artificial intelligence system that will spark a nuclear holocaust. Sarah is targeted because Skynet knows that her unborn son will lead the fight against them. With the virtually unstoppable Terminator in hot pursuit, she and Kyle attempt to escape.'," +
           "'1h 48m','1984-10-26','./img/terminator.jpg')");
-
-            // Genres
+        }
+        private void InsertGenres(MigrationBuilder migrationBuilder)
+        {
 
             migrationBuilder.Sql("INSERT INTO Genres(GenreName) VALUES" +
                 "('Drama')");
@@ -145,8 +167,9 @@ namespace Ratings.Elefanti.Migrations
 
             migrationBuilder.Sql("INSERT INTO Genres(GenreName) VALUES" +
                 "('Holiday')");
-
-            //Movie Genres
+        }
+        private void InsertMovieGenres(MigrationBuilder migrationBuilder)
+        {
 
             migrationBuilder.Sql("INSERT INTO MovieGenres(MovieId,GenreId) VALUES" +
                 "(1,1)");
@@ -297,401 +320,401 @@ namespace Ratings.Elefanti.Migrations
 
             migrationBuilder.Sql("INSERT INTO MovieGenres(MovieId,GenreId) VALUES" +
                "(22,3)");
+        }
+        private void InsertPeople(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+              "('Tim','Robbis','1958-10-16')");
 
-            //People
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Morgan','Freeman','1937-06-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Tim','Robbis','1958-10-16','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Bob','Gunton','1945-11-15')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Morgan','Freeman','1937-06-01','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Frank','Darabont','1959-01-28')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bob','Gunton','1945-11-15','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Stephen','King','1947-09-21')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Frank','Darabont','1959-01-28','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Frank','Darabont','1959-01-28')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Stephen','King','1947-09-21','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Marlon','Brando','1924-04-03')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Frank','Darabont','1959-01-28','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Al','Pacino','1940-04-25')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Marlon','Brando','1924-04-03','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('James','Caan','1940-03-26')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Al','Pacino','1940-04-25','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Francis Ford','Coppola','1939-04-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('James','Caan','1940-03-26','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Mario','Puzo','1920-10-15')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Francis Ford','Coppola','1939-04-07','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Francis Ford','Coppola','1939-04-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Mario','Puzo','1920-10-15','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Christian','Bale','1974-01-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Francis Ford','Coppola','1939-04-07','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Heath','Ledger','1979-04-04')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Christian','Bale','1974-01-30','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Aaron','Eckhart','1968-03-12')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Heath','Ledger','1979-04-04','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Christopher','Nolan','1970-07-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Aaron','Eckhart','1968-03-12','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Jonathan','Nolan','1976-06-06')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Christopher','Nolan','1970-07-30','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+                "('Christopher','Nolan','1970-07-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Jonathan','Nolan','1976-06-06','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('David S.','Goyer','1965-12-22')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-                "('Christopher','Nolan','1970-07-30','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Honda','Fonda','1905-05-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('David S.','Goyer','1965-12-22','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lee J.','Cobb','1911-12-08')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Honda','Fonda','1905-05-16','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Martin','Balsam','1919-11-04')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lee J.','Cobb','1911-12-08','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Sidney','Lumet','1924-06-25')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Martin','Balsam','1919-11-04','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Reginald','Rose','1920-12-10')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Sidney','Lumet','1924-06-25','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Liam','Neeson','1952-06-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Reginald','Rose','1920-12-10','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Ralph','Fiennes','1962-12-22')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Liam','Neeson','1952-06-07','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Ben','Kingsley','1943-12-31')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Ralph','Fiennes','1962-12-22','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Steven','Spielberg','1946-12-18')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Ben','Kingsley','1943-12-31','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Thomas','Keneally','1935-10-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Steven','Spielberg','1946-12-18','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Steven','Zaillian','1953-01-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Thomas','Keneally','1935-10-07','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Leonardo','DiCaprio','1974-11-11')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Steven','Zaillian','1953-01-30','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Joseph','Gordon-Levitt','1981-02-17')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Leonardo','DiCaprio','1974-11-11','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Elliot','Page','1987-02-21')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Joseph','Gordon-Levitt','1981-02-17','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Keanu','Reeves','1964-09-02')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Elliot','Page','1987-02-21','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Laurence','Fishburne','1961-07-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Keanu','Reeves','1964-09-02','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Carrie-Anne','Moss','1967-08-21')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Laurence','Fishburne','1961-07-30','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lilly','Wachowski','1967-12-29')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Carrie-Anne','Moss','1967-08-21','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lilly','Wachowski','1967-12-29')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lilly','Wachowski','1967-12-29','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lana','Wachowski','1965-06-21')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lilly','Wachowski','1967-12-29','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lana','Wachowski','1965-06-21')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lana','Wachowski','1965-06-21','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Brad','Pitt','1963-12-18')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lana','Wachowski','1965-06-21','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Kevin','Spacey','1959-07-26')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Brad','Pitt','1963-12-18','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('David','Fincher','1962-08-28')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Kevin','Spacey','1959-07-26','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Andrew Kevin','Walker','1964-08-14')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('David','Fincher','1962-08-28','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('James','Stewart','1908-05-20')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Andrew Kevin','Walker','1964-08-14','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Donna','Reed','1921-01-27')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('James','Stewart','1908-05-20','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lionel','Barrymore','1878-04-28')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Donna','Reed','1921-01-27','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Frank','Capra','1897-05-18')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lionel','Barrymore','1878-04-28','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Frances','Goodrich','1890-12-21')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Frank','Capra','1897-05-18','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Albert','Hackett','1900-02-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Frances','Goodrich','1890-12-21','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Frank','Capra','1897-05-18')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Albert','Hackett','1900-02-16','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Matthew','McConaughey','1969-11-04')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Frank','Capra','1897-05-18','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Anne','Hathaway','1982-11-12')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Matthew','McConaughey','1969-11-04','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Jessica','Chastain','1977-03-24')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Anne','Hathaway','1982-11-12','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Song','Kang-ho','1967-01-17')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Jessica','Chastain','1977-03-24','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lee','Sun-kyun','1975-03-02')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Song','Kang-ho','1967-01-17','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Cho','Yeo-jeong','1981-02-10')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lee','Sun-kyun','1975-03-02','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Bong','Joon Ho','1969-09-14')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Cho','Yeo-jeong','1981-02-10','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Han','Jin-won','1986-01-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bong','Joon Ho','1969-09-14','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Bong','Joon Ho','1969-09-14')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Han','Jin-won','1986-01-01','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Adrien','Brody','1973-04-14')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bong','Joon Ho','1969-09-14','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Thomas','Kretschmann','1962-09-08')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Adrien','Brody','1973-04-14','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Frank','Finlay','1926-08-06')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Thomas','Kretschmann','1962-09-08','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Roman','Polanski','1933-08-18')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Frank','Finlay','1926-08-06','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Ronald','Harwood','1934-11-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Roman','Polanski','1933-08-18','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Wladyslaw','Szpilman','1911-01-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Ronald','Harwood','1934-11-09','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Sigourney','Weaver','1949-10-08')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Wladyslaw','Szpilman','1911-01-01','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Michael','Biehn','1956-07-31')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Sigourney','Weaver','1949-10-08','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Carrie','Henn','1976-05-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Michael','Biehn','1956-07-31','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('James','Cameron','1954-10-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Carrie','Henn','1976-05-07','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('James','Cameron','1954-10-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('James','Cameron','1954-10-16','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('David','Giler','1943-07-23')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('James','Cameron','1954-10-16','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Walter','Hill','1942-01-10')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('David','Giler','1943-07-23','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Choi','Min-sik','1962-01-22')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Walter','Hill','1942-01-10','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Yoo','Ji-tae','1976-04-13')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Choi','Min-sik','1962-01-22','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Kang','Hye-jeong','1982-01-04')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Yoo','Ji-tae','1976-04-13','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Park','Chan-wook','1963-08-23')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Kang','Hye-jeong','1982-01-04','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Garon','Tsuchiya','1947-01-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Park','Chan-wook','1963-08-23','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Nobuaki','Minegishi','1959-06-15')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Garon','Tsuchiya','1947-01-01','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Joaquin','Phoenix','1974-10-28')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Nobuaki','Minegishi','1959-06-15','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Robert','De Niro','1943-08-17')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Joaquin','Phoenix','1974-10-28','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Zazie','Beetz','1991-06-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Robert','De Niro','1943-08-17','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Todd','Phillips','1970-12-20')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Zazie','Beetz','1991-06-01','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Todd','Phillips','1970-12-20')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Todd','Phillips','1970-12-20','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Scott','Silver','1964-11-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Todd','Phillips','1970-12-20','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Bob','Kane','1915-10-24')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Scott','Silver','1964-11-30','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Anthony','Gonzalez','2004-09-23')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bob','Kane','1915-10-24','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Gael Garcia','Bernal','1978-11-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Anthony','Gonzalez','2004-09-23','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Benjamin','Bratt','1963-12-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Gael Garcia','Bernal','1978-11-30','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lee','Unkrich','1967-10-08')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Benjamin','Bratt','1963-12-16','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Adrian','Molina','1985-10-23')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lee','Unkrich','1967-10-08','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Jason','Katz','1960-05-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Adrian','Molina','1985-10-23','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Matthew','Aldrich','1979-06-24')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Jason','Katz','1960-05-07','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lee','Unkrich','1967-10-08')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Matthew','Aldrich','1979-06-24','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Ryûnosuke','Kamiki','1993-05-19')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lee','Unkrich','1967-10-08','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Mone','Kamishiraishi','1998-01-27')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Ryûnosuke','Kamiki','1993-05-19','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Ryo','Narita','1993-11-22')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Mone','Kamishiraishi','1998-01-27','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Makoto','Shinkai','1973-02-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Ryo','Narita','1993-11-22','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Makoto','Shinkai','1973-02-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Makoto','Shinkai','1973-02-09','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Aamir','Khan','1965-03-14')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Makoto','Shinkai','1973-02-09','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Ranganathan','Madhavan','1970-06-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Aamir','Khan','1965-03-14','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Mona','Singh','1981-10-08')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Ranganathan','Madhavan','1970-06-01','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Rajkumar','Hirani','1962-11-20')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Mona','Singh','1981-10-08','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Rajkumar','Hirani','1962-11-20')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Rajkumar','Hirani','1962-11-20','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Abhijat','Joshi','1969-12-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Rajkumar','Hirani','1962-11-20','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Vidhu Vinod','Chopra','1952-09-05')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Abhijat','Joshi','1969-12-01','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lin-Manuel','Miranda','1980-01-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Vidhu Vinod','Chopra','1952-09-05','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Phillipa','Soo','1990-03-31')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lin-Manuel','Miranda','1980-01-16','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Leslie','Odom Jr.','1981-08-06')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Phillipa','Soo','1990-03-31','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Thomas','Kail','1978-01-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Leslie','Odom Jr.','1981-08-06','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Lin-Manuel','Miranda','1980-01-16')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Thomas','Kail','1978-01-30','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+              "('Ron','Chernow','1949-03-03')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Lin-Manuel','Miranda','1980-01-16','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Edward','Asner','1929-11-15')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-              "('Ron','Chernow','1949-03-03','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Jordan','Nagai','2000-02-05')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Edward','Asner','1929-11-15','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('John','Ratzenberger','1947-04-06')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Jordan','Nagai','2000-02-05','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Pete','Docter','1968-10-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('John','Ratzenberger','1947-04-06','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Bob','Peterson','1961-01-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Pete','Docter','1968-10-09','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Pete','Docter','1968-10-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bob','Peterson','1961-01-09','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Bob','Peterson','1961-01-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Pete','Docter','1968-10-09','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Tom','McCarthy','1966-06-07')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Bob','Peterson','1961-01-09','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Darsheel','Safary','1997-03-09')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Tom','McCarthy','1966-06-07','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Tisca','Chopra','1973-11-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Darsheel','Safary','1997-03-09','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Aamir','Khan','1965-03-14')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Tisca','Chopra','1973-11-01','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Amole','Gupte','1962-01-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Aamir','Khan','1965-03-14','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+              "('Amole','Gupte','1962-01-01')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Amole','Gupte','1962-01-01','Director')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Arnold','Schwarzenegger','1947-07-30')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-              "('Amole','Gupte','1962-01-01','Writer')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Linda','Hamilton','1956-09-26')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Arnold','Schwarzenegger','1947-07-30','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+               "('Michael','Biehn','1956-07-31')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Linda','Hamilton','1956-09-26','Actor')");
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+             "('Gale Anne','Hurd','1955-10-25')");
 
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-               "('Michael','Biehn','1956-07-31','Actor')");
-
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-             "('Gale Anne','Hurd','1955-10-25','Writer')");
-
-            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate,Discriminator) VALUES" +
-             "('William','Wisher','1958-09-01','Writer')");
-
-            //Movie Actors
-
+            migrationBuilder.Sql("INSERT INTO People(Name,Surname,BirthDate) VALUES" +
+             "('William','Wisher','1958-09-01')");
+        }
+        private void InsertMovieActors(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
              "(1,1,'Andy Dufresne')");
 
@@ -889,9 +912,9 @@ namespace Ratings.Elefanti.Migrations
 
             migrationBuilder.Sql("INSERT INTO MovieActors(MovieId,ActorId,CharacterName) VALUES" +
              "(22,66,'Kyle Reese')");
-
-            //Movie Directors
-
+        }
+        private void InsertMovieDirectors(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
              "(1,1)");
 
@@ -969,9 +992,9 @@ namespace Ratings.Elefanti.Migrations
 
             migrationBuilder.Sql("INSERT INTO MovieDirectors(MovieId,DirectorId) VALUES" +
              "(22,12)");
-
-            //Movie Writers
-
+        }
+        private void InsertMovieWriters(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
              "(1,1,'Novel writer')");
 
@@ -1113,8 +1136,9 @@ namespace Ratings.Elefanti.Migrations
             migrationBuilder.Sql("INSERT INTO MovieWriters(MovieId,WriterId,Credit) VALUES" +
              "(22,43,'Aditional dialogue')");
 
-            //Movie Ratings
-
+        }
+        private void InsertMovieRatings(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
              "(1,1,9)");
 
@@ -1240,9 +1264,9 @@ namespace Ratings.Elefanti.Migrations
 
             migrationBuilder.Sql("INSERT INTO Ratings(MovieId,UserId,RatingNr) VALUES" +
              "(22,6,8)");
-
-            //Movie Comments
-
+        }
+        private void InsertMovieComments(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(1,2,'The best of the best 10/10!')");
 
@@ -1310,10 +1334,15 @@ namespace Ratings.Elefanti.Migrations
              "(22,6,'The Terminator is one of the greatest films ever!')");
         }
 
+
+
+
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
 
         }
+
+
     }
 }

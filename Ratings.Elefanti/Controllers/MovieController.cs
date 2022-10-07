@@ -86,7 +86,7 @@ namespace Ratings.Elefanti.Controllers
                                where movies.Id == movieid
                                where movieWriters.Writer.Id == people.Id
                                where movieWriters.Movie.Id == movies.Id
-                               select people).ToList();
+                               select people);
 
             // Get the queried movie directors
             var directorsList = (from movies in _db.Movies
