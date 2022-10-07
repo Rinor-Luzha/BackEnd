@@ -27,48 +27,98 @@ namespace Ratings.Elefanti.Controllers
         public IActionResult GetRated(int id)
         {
             //Return a list of all the movies that the logged in user has rated together with the rating the he/she has given them
-            var rated = from movies in _db.Movies
-                        from ratings in _db.Ratings
-                        from users in _db.Users
-                        where users.Id == ratings.User.Id
-                        where movies.Id == ratings.Movie.Id
-                        where users.Id == id
-                        select new
-                        {
-                            Id = ratings.Movie.Id,
-                            Description = ratings.Movie.Description,
-                            Length = movies.Length,
-                            Title = movies.Title,
-                            ReleaseDate = movies.ReleaseDate,
-                            Rating = ratings.RatingNr,
-                            Img = movies.Img
-                        };
+            var rated = (from movies in _db.Movies
+                         from ratings in _db.Ratings
+                         from users in _db.Users
+                         where users.Id == ratings.User.Id
+                         where movies.Id == ratings.Movie.Id
+                         where users.Id == id
+                         select new
+                         {
+                             Id = ratings.Movie.Id,
+                             Description = ratings.Movie.Description,
+                             Length = movies.Length,
+                             Title = movies.Title,
+                             ReleaseDate = movies.ReleaseDate,
+                             Rating = ratings.RatingNr,
+                             Img = movies.Img
+                         }).ToList();
 
-            return Ok(rated);
+            List<object> ratedWithGenres = new List<object>();
+
+            // Get genres for each movie
+            foreach (var movie in rated)
+            {
+                var genresList = (from genres in _db.Genres
+                                  from movieGenres in _db.MovieGenres
+                                  where movieGenres.Genre.Id == genres.Id
+                                  where movieGenres.Movie.Id == movie.Id
+                                  select genres.GenreName).ToList();
+
+
+                // Complete the details for the movie
+                ratedWithGenres.Add(new
+                {
+                    Id = movie.Id,
+                    Description = movie.Description,
+                    Length = movie.Length,
+                    Title = movie.Title,
+                    ReleaseDate = movie.ReleaseDate,
+                    Img = movie.Img,
+                    Rating = movie.Rating,
+                    Genres = genresList
+                });
+            }
+            return Ok(ratedWithGenres);
         }
 
         [HttpGet("new")]
         public IActionResult GetNewMovies()
         {
-            //Return a list of all the movies in the database ordered by release date together with their average rating
-            var newMovies = from movies in _db.Movies
-                            from ratings in _db.Ratings
-                            from users in _db.Users
-                            where users.Id == ratings.User.Id
-                            where movies.Id == ratings.Movie.Id
-                            group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
-                            orderby grp.Key.ReleaseDate descending
-                            select new
-                            {
-                                Id = grp.Key.Id,
-                                Description = grp.Key.Description,
-                                Length = grp.Key.Length,
-                                Title = grp.Key.Title,
-                                ReleaseDate = grp.Key.ReleaseDate,
-                                Img = grp.Key.Img,
-                                Rating = grp.Average(ratings => ratings.RatingNr)
-                            };
+            //Return a list of all the rated movies in the database ordered by release date
+            var ratedNewMovies = (from movies in _db.Movies
+                                  from ratings in _db.Ratings
+                                  from users in _db.Users
+                                  where users.Id == ratings.User.Id
+                                  where movies.Id == ratings.Movie.Id
+                                  orderby movies.ReleaseDate descending
+                                  select movies).ToList();
 
+            List<object> newMovies = new List<object>();
+
+            foreach (Movie movie in ratedNewMovies)
+            {
+                // Calculate average rating for each movie
+                var ratingList = (from ratings in _db.Ratings
+                                  where ratings.Movie.Id == movie.Id
+                                  group ratings by new { ratings.Movie.Id } into grp
+                                  select new
+                                  {
+                                      Rating = grp.Average(ratings => ratings.RatingNr)
+                                  }).ToList()[0];
+
+                // Get genres for each movie
+                var genresList = (from genres in _db.Genres
+                                  from movieGenres in _db.MovieGenres
+                                  where movieGenres.Genre.Id == genres.Id
+                                  where movieGenres.Movie.Id == movie.Id
+                                  select genres.GenreName).ToList();
+
+
+                // Complete the details for the movie
+                newMovies.Add(new
+                {
+                    Id = movie.Id,
+                    Description = movie.Description,
+                    Length = movie.Length,
+                    Title = movie.Title,
+                    ReleaseDate = movie.ReleaseDate,
+                    Img = movie.Img,
+                    Rating = ratingList.Rating,
+                    Genres = genresList
+                });
+
+            }
             return Ok(newMovies);
         }
 
@@ -94,7 +144,32 @@ namespace Ratings.Elefanti.Controllers
                                    Rating = grp.Average(ratings => ratings.RatingNr)
                                };
 
-            return Ok(highestRated);
+            List<object> highestWithGenres = new List<object>();
+
+            // Get genres for each movie
+            foreach (var movie in highestRated)
+            {
+                var genreList = (from genres in _db.Genres
+                                 from movieGenres in _db.MovieGenres
+                                 where movieGenres.Genre.Id == genres.Id
+                                 where movieGenres.Movie.Id == movie.Id
+                                 select genres.GenreName).ToList();
+
+
+                // Complete the details for the movie
+                highestWithGenres.Add(new
+                {
+                    Id = movie.Id,
+                    Description = movie.Description,
+                    Length = movie.Length,
+                    Title = movie.Title,
+                    ReleaseDate = movie.ReleaseDate,
+                    Img = movie.Img,
+                    Rating = movie.Rating,
+                    Genres = genreList
+                });
+            }
+            return Ok(highestWithGenres);
         }
 
         [HttpGet("recommended")]
@@ -151,22 +226,48 @@ namespace Ratings.Elefanti.Controllers
                                       Title = grp.Key.Title,
                                       ReleaseDate = grp.Key.ReleaseDate,
                                       Img = grp.Key.Img,
-                                      Rating = grp.Average(ratings => ratings.RatingNr)
+                                      Rating = grp.Average(ratings => ratings.RatingNr),
                                   };
-                return Ok(recommended);
+
+                List<object> recommendedWithGenres = new List<object>();
+
+                // Get genres for each movie
+                foreach (var movie in recommended)
+                {
+                    var genresList = (from genres in _db.Genres
+                                      from movieGenres in _db.MovieGenres
+                                      where movieGenres.Genre.Id == genres.Id
+                                      where movieGenres.Movie.Id == movie.Id
+                                      select genres.GenreName).ToList();
+
+
+                    // Complete the details for the movie
+                    recommendedWithGenres.Add(new
+                    {
+                        Id = movie.Id,
+                        Description = movie.Description,
+                        Length = movie.Length,
+                        Title = movie.Title,
+                        ReleaseDate = movie.ReleaseDate,
+                        Img = movie.Img,
+                        Rating = movie.Rating,
+                        Genres = genresList
+                    });
+                }
+                return Ok(recommendedWithGenres);
             }
             // If the user hasn't logged in or hasn't rated any movie, then it
             // returns a list of movies with specific genres ordered by rating.
             // ?The genres that the app recommends will be changed by the admin every week?
             else
             {
-                var genresList = _db.Genres.ToList();
+                var allGenresList = _db.Genres.ToList();
                 List<string> randomGenres = new List<string>();
                 Random rnd = new Random();
                 for (int i = 0; i < 3; i++)
                 {
-                    int randomIndex = rnd.Next(genresList.Count);
-                    string genre = (genresList[randomIndex]).GenreName;
+                    int randomIndex = rnd.Next(allGenresList.Count);
+                    string genre = (allGenresList[randomIndex]).GenreName;
                     if (randomGenres.Contains(genre))
                     {
                         i--;
@@ -197,7 +298,32 @@ namespace Ratings.Elefanti.Controllers
                                       Img = grp.Key.Img,
                                       Rating = grp.Average(ratings => ratings.RatingNr)
                                   };
-                return Ok(recommended);
+                List<object> recommendedWithGenres = new List<object>();
+
+                // Get genres for each movie
+                foreach (var movie in recommended)
+                {
+                    var genresList = (from genres in _db.Genres
+                                      from movieGenres in _db.MovieGenres
+                                      where movieGenres.Genre.Id == genres.Id
+                                      where movieGenres.Movie.Id == movie.Id
+                                      select genres.GenreName).ToList();
+
+
+                    // Complete the details for the movie
+                    recommendedWithGenres.Add(new
+                    {
+                        Id = movie.Id,
+                        Description = movie.Description,
+                        Length = movie.Length,
+                        Title = movie.Title,
+                        ReleaseDate = movie.ReleaseDate,
+                        Img = movie.Img,
+                        Rating = movie.Rating,
+                        Genres = genresList
+                    });
+                }
+                return Ok(recommendedWithGenres);
             }
         }
         [HttpGet("random")]
@@ -205,7 +331,7 @@ namespace Ratings.Elefanti.Controllers
         {
             // First get a list of recommended movies from the last function
             var okResult = GetRecommendedMovies(userid);
-            var recommended = ((IQueryable<object>)((OkObjectResult)okResult).Value).ToList();
+            var recommended = (List<object>)((OkObjectResult)okResult).Value;
 
             // From the list pick a random one and return it
             Random rnd = new Random();
