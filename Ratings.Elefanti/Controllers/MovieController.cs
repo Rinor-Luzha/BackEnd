@@ -72,21 +72,21 @@ namespace Ratings.Elefanti.Controllers
 
             // Get the queried movie actors
             var actorsList = (from movies in _db.Movies
-                              from people in _db.People
+                              from actor in _db.People
                               from movieActors in _db.MovieActors
                               where movies.Id == movieid
-                              where movieActors.Actor.Id == people.Id
+                              where movieActors.Actor.Id == actor.Id
                               where movieActors.Movie.Id == movies.Id
-                              select people).ToList();
+                              select new { actor, movieActors.CharacterName }).ToList();
 
             // Get the queried movie writers
             var writersList = (from movies in _db.Movies
-                               from people in _db.People
+                               from writer in _db.People
                                from movieWriters in _db.MovieWriters
                                where movies.Id == movieid
-                               where movieWriters.Writer.Id == people.Id
+                               where movieWriters.Writer.Id == writer.Id
                                where movieWriters.Movie.Id == movies.Id
-                               select people);
+                               select new { writer, movieWriters.Credit}).ToList();
 
             // Get the queried movie directors
             var directorsList = (from movies in _db.Movies
