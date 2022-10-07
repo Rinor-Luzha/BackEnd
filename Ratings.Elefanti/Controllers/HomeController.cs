@@ -82,7 +82,7 @@ namespace Ratings.Elefanti.Controllers
                                   where users.Id == ratings.User.Id
                                   where movies.Id == ratings.Movie.Id
                                   orderby movies.ReleaseDate descending
-                                  select movies).ToList();
+                                  select movies).Distinct().ToList();
 
             List<object> newMovies = new List<object>();
 

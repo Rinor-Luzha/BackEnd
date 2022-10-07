@@ -86,7 +86,7 @@ namespace Ratings.Elefanti.Controllers
                                where movies.Id == movieid
                                where movieWriters.Writer.Id == writer.Id
                                where movieWriters.Movie.Id == movies.Id
-                               select new { writer, movieWriters.Credit}).ToList();
+                               select new { writer, movieWriters.Credit }).ToList();
 
             // Get the queried movie directors
             var directorsList = (from movies in _db.Movies
@@ -157,7 +157,7 @@ namespace Ratings.Elefanti.Controllers
             // Todo: Add check if this failed
             MovieComment movieComment = new MovieComment { Movie = movie, User = user, Comment = comment };
             _movieCommentRepository.Create(movieComment);
-            return Created("Success",movieComment);
+            return Created("Success", movieComment);
         }
         [HttpPut("comments")]
         public IActionResult ChangeMovieComment(int commentid, string comment)
@@ -220,7 +220,7 @@ namespace Ratings.Elefanti.Controllers
             //Todo: Check for failure
             Rating newRating = new Rating { Movie = movie, User = user, RatingNr = rating };
             _ratingRepository.Create(newRating);
-            return Created("Success",newRating);
+            return Created("Success", newRating);
         }
 
         [HttpPut("ratings")]
