@@ -107,7 +107,7 @@ namespace Ratings.Elefanti.Controllers
                 Title = movie.Title,
                 ReleaseDate = movie.ReleaseDate,
                 Img = movie.Img,
-                Rating = movie.Rating,
+                Rating = double.Parse(String.Format("{0:#,0.00}", movie.Rating)),
                 Genres = genresList,
                 Actors = actorsList,
                 Writers = writersList,

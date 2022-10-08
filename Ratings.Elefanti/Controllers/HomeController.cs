@@ -65,7 +65,7 @@ namespace Ratings.Elefanti.Controllers
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Img = movie.Img,
-                    Rating = movie.Rating,
+                    Rating = double.Parse(String.Format("{0:#,0.00}", movie.Rating)),
                     Genres = genresList
                 });
             }
@@ -81,8 +81,7 @@ namespace Ratings.Elefanti.Controllers
                                   from users in _db.Users
                                   where users.Id == ratings.User.Id
                                   where movies.Id == ratings.Movie.Id
-                                  orderby movies.ReleaseDate descending
-                                  select movies).Distinct().ToList();
+                                  select movies).Distinct().ToList().OrderByDescending(movie => movie.ReleaseDate);
 
             List<object> newMovies = new List<object>();
 
@@ -114,12 +113,12 @@ namespace Ratings.Elefanti.Controllers
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Img = movie.Img,
-                    Rating = ratingList.Rating,
+                    Rating = double.Parse(String.Format("{0:#,0.00}", ratingList.Rating)),
                     Genres = genresList
                 });
 
             }
-            return Ok(newMovies);
+                return Ok(newMovies);
         }
 
         [HttpGet("highest")]
@@ -146,14 +145,24 @@ namespace Ratings.Elefanti.Controllers
 
             List<object> highestWithGenres = new List<object>();
 
-            // Get genres for each movie
+           
             foreach (var movie in highestRated)
             {
+                // Get genres for each movie
                 var genreList = (from genres in _db.Genres
                                  from movieGenres in _db.MovieGenres
                                  where movieGenres.Genre.Id == genres.Id
                                  where movieGenres.Movie.Id == movie.Id
                                  select genres.GenreName).ToList();
+
+                // Get actors for each movie
+                var actorsList = (from movies in _db.Movies
+                                  from actor in _db.People
+                                  from movieActors in _db.MovieActors
+                                  where movies.Id == movie.Id
+                                  where movieActors.Actor.Id == actor.Id
+                                  where movieActors.Movie.Id == movies.Id
+                                  select actor).ToList();
 
 
                 // Complete the details for the movie
@@ -165,8 +174,9 @@ namespace Ratings.Elefanti.Controllers
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Img = movie.Img,
-                    Rating = movie.Rating,
-                    Genres = genreList
+                    Rating = double.Parse(String.Format("{0:#,0.00}", movie.Rating)),
+                    Genres = genreList,
+                    Actors = actorsList
                 });
             }
             return Ok(highestWithGenres);
@@ -250,7 +260,7 @@ namespace Ratings.Elefanti.Controllers
                         Title = movie.Title,
                         ReleaseDate = movie.ReleaseDate,
                         Img = movie.Img,
-                        Rating = movie.Rating,
+                        Rating = double.Parse(String.Format("{0:#,0.00}", movie.Rating)),
                         Genres = genresList
                     });
                 }
@@ -319,7 +329,7 @@ namespace Ratings.Elefanti.Controllers
                         Title = movie.Title,
                         ReleaseDate = movie.ReleaseDate,
                         Img = movie.Img,
-                        Rating = movie.Rating,
+                        Rating = double.Parse(String.Format("{0:#,0.00}", movie.Rating)),
                         Genres = genresList
                     });
                 }
