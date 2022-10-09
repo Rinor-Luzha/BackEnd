@@ -1271,67 +1271,331 @@ namespace Ratings.Elefanti.Migrations
              "(1,2,'The best of the best 10/10!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(1,5,'Im so glad I took the time to see this!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(1,8,'I think this is a masterpiece!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(1,1,'After so many good reviews for this movie I expected more!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(1,6,'Wonderful movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(2,3,'Such a good movie!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
-             "(3,5,'An excellent film.')");
+             "(2,9,'Avesome!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(2,11,'Could be better!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(2,7,'I would see that again! I loved all the finer details of the movie, and I want to experience them all over again.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(2,5,'Expected more!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(3,5,'An excellent movie.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(3,8,'I didnt want it to end at all.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(3,2,'Avesome!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(3,10,'Expected more! Disappointed.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(3,7,'I would see that again and again.')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(4,6,'In love with this movie.')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(4,9,'Didnt want it to end.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(4,12,'I want to watch it over and over again!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(4,3,'I expected more!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(4,8,'So disappointed!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(5,8,'Could be better!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(5,12,'I think this was a masterpiece!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(5,2,'I dont often rewatch movies, but I know that this one deserves it.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(5,2,'I love it!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(5,2,'Expected more!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(6,10,'Love it!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(6,6,'I loved every second.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(6,4,'Could be better!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(6,8,'Couldnt believe I lost my time for this movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(6,9,'Diasppointed!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(7,2,'Disappointed!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(7,3,'I want to watch it over and over again!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(7,7,'Didnt want it to end!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(7,9,'The best movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(7,11,'Could be better!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(8,12,'Sooo good!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(8,4,'Expected more!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(8,6,'I loved every second!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(8,5,'The best movie of all the time!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(8,7,'Wonderfull movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(9,4,'Couldnt wait for it!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(9,6,'Didnt want it to end!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(9,8,'Great movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(9,11,'The best of all the time!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(9,9,'In love with this movie!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(10,14,'Expected more!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(10,1,'Great movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(10,5,'In love with every second of it!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(10,7,'Could be better!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(10,8,'The best!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(11,9,'Good movie.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(11,5,'The best movie.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(11,6,'I will watch it over and over again.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(11,8,'Expected more.')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(11,11,'Could be better.')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(12,2,'Not how I expected!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(12,7,'The best movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(12,11,'The greatest of all the time!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(12,6,'In love with this movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(12,4,'I expected more!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(13,8,'Such a good movie!!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(13,3,'Great movie!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(13,7,'I will watch it over and over again!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(13,11,'OMGG in love with this movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(13,13,'Expected more!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(14,10,'The best!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(14,12,'The greatest of all the time!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(14,8,'The best movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(14,2,'Disappointed, expected more!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(14,11,'I loved every second of it!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(15,5,'The best!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
-             "(16,7,' Could be better!!')");
+             "(15,8,'Great movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(15,9,'In love with this movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(15,7,'Could be better!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(15,11,'Diappointed!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(16,7,'Could be better!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(16,9,'Such a good movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(16,11,'Grat movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(16,8,'The best movie of all the time!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(16,1,'Could be better!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(17,6,'Good movie!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(17,3,'Such a good movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(17,2,'I expected more!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(17,11,'Great movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(17,13,'The best movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(18,9,'Such a good movie!!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(18,5,'I loved it!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(18,11,'Great movie!!!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(18,13,'The best movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(18,6,'Disappointed, expected more!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(19,7,'The bestt!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(19,11,'In love with this movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(19,5,'Could be better!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(19,8,'Disappointed, could be better!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(19,10,'Great movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(20,4,'Just WOW!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(20,7,'The best of all the time!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(20,2,'I loved every second of it!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(20,9,'I can watch it over and over again!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(20,6,'Great movie!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
              "(21,1,'The best!!')");
 
             migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
-             "(22,6,'The Terminator is one of the greatest films ever!')");
+             "(21,8,'The best movie of all the time!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(21,3,'The greatest!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(21,11,'Could be better!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(21,6,'Such a good movie!!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(22,6,'The Terminator is one of the greatest movies ever!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(22,8,'The best movie of all the time!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(22,3,'Expected more, after so many suggestions I got for this movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(22,9,'The best movie!')");
+
+            migrationBuilder.Sql("INSERT INTO MovieComments(MovieId,UserId,Comment) VALUES" +
+             "(22,12,'The greatest movie of all the time!')");
         }
 
 
