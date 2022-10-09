@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Ratings.Elefanti.Data;
+using Ratings.Elefanti.Dtos;
 using Ratings.Elefanti.Models;
 using System.Reflection.Metadata.Ecma335;
+using System.Xml;
 
 namespace Ratings.Elefanti.Controllers
 {
@@ -135,10 +138,10 @@ namespace Ratings.Elefanti.Controllers
             return Ok(commentsList);
         }
 
-        [HttpPost("comments")]
-        public IActionResult PostMovieComment(int movieid, int userid, string comment)
+        [HttpPost("comment")]
+        public IActionResult PostMovieComment(CommentDto dto)
         {
-            User user = _userRepository.GetById(userid);
+            User user = _userRepository.GetById(dto.UserId);
             if (user == null)
             {
                 return BadRequest(new
@@ -146,7 +149,7 @@ namespace Ratings.Elefanti.Controllers
                     message = "Invalid User ID"
                 });
             }
-            Movie movie = _movieRepository.GetById(movieid);
+            Movie movie = _movieRepository.GetById(dto.MovieId);
             if (movie == null)
             {
                 return BadRequest(new
@@ -155,14 +158,14 @@ namespace Ratings.Elefanti.Controllers
                 });
             }
             // Todo: Add check if this failed
-            MovieComment movieComment = new MovieComment { Movie = movie, User = user, Comment = comment };
+            MovieComment movieComment = new MovieComment { Movie = movie, User = user, Comment = dto.Comment };
             _movieCommentRepository.Create(movieComment);
             return Created("Success", movieComment);
         }
-        [HttpPut("comments")]
-        public IActionResult ChangeMovieComment(int commentid, string comment)
+        [HttpPut("comment")]
+        public IActionResult ChangeMovieComment(ChangeCommentDto dto)
         {
-            MovieComment movieComment = _movieCommentRepository.GetById(commentid);
+            MovieComment movieComment = _movieCommentRepository.GetById(dto.Id);
             if (movieComment == null)
             {
                 return BadRequest(new
@@ -171,13 +174,13 @@ namespace Ratings.Elefanti.Controllers
                 });
             }
 
-            movieComment.Comment = comment;
+            movieComment.Comment = dto.Comment;
             // Todo: Add check if this failed
             _movieCommentRepository.Update(movieComment);
-            return Ok();
+            return Ok(movieComment);
         }
 
-        [HttpDelete("comments")]
+        [HttpDelete("comment")]
         public IActionResult DeleteMovieComment(int commentid)
         {
             MovieComment movieComment = _movieCommentRepository.GetById(commentid);
@@ -193,14 +196,25 @@ namespace Ratings.Elefanti.Controllers
             _movieCommentRepository.Remove(movieComment);
             return NoContent();
         }
-
-        //Get movie comments, post rating, put rating, remove rating.
-
-
-        [HttpPost("ratings")]
-        public IActionResult RateMovie(int movieid, int userid, int rating)
+        private int GetRating(int movieid, int userid)
         {
-            User user = _userRepository.GetById(userid);
+            var rating = (from ratings in _db.Ratings
+                          where ratings.User.Id == userid
+                          where ratings.Movie.Id == movieid
+                          select ratings).ToList();
+            if (rating.Count == 0)
+            {
+                return -1;
+
+            }
+            return rating[0].Id;
+        }
+
+
+        [HttpPost("rating")]
+        public IActionResult RateMovie(RatingDto dto)
+        {
+            User user = _userRepository.GetById(dto.UserId);
             if (user == null)
             {
                 return BadRequest(new
@@ -208,7 +222,7 @@ namespace Ratings.Elefanti.Controllers
                     message = "Invalid User ID"
                 });
             }
-            Movie movie = _movieRepository.GetById(movieid);
+            Movie movie = _movieRepository.GetById(dto.MovieId);
             if (movie == null)
             {
                 return BadRequest(new
@@ -216,43 +230,59 @@ namespace Ratings.Elefanti.Controllers
                     message = "Invalid Movie ID"
                 });
             }
+
+            int ratingId = GetRating(dto.MovieId, dto.UserId);
+
+            if (ratingId == -1)
+            {
+                Rating newRating = new Rating { Movie = movie, User = user, RatingNr = dto.Rating };
+                _ratingRepository.Create(newRating);
+                return Ok(newRating);
+            }
             //Todo: validate rating
             //Todo: Check for failure
-            Rating newRating = new Rating { Movie = movie, User = user, RatingNr = rating };
-            _ratingRepository.Create(newRating);
-            return Created("Success", newRating);
+            return ChangeRating(dto);
         }
 
-        [HttpPut("ratings")]
-        public IActionResult ChangeRating(int ratingid, int rating)
+        [HttpPut("rating")]
+        public IActionResult ChangeRating(RatingDto dto)
         {
-            Rating oldRating = _ratingRepository.GetById(ratingid);
-            if (oldRating == null)
+
+            int ratingId = GetRating(dto.MovieId, dto.UserId);
+
+
+            if (ratingId == -1)
             {
                 return BadRequest(new
                 {
                     message = "Invalid Rating ID"
                 });
             }
-            oldRating.RatingNr = rating;
+
+            Rating oldRating = _ratingRepository.GetById(ratingId);
+            oldRating.RatingNr = dto.Rating;
+
             // Todo: Add check if this failed
             _ratingRepository.Update(oldRating);
-            return Ok();
+            return Ok(oldRating);
         }
 
-        [HttpDelete("ratings")]
-        public IActionResult DeleteRating(int ratingid)
+        [HttpDelete("rating")]
+        public IActionResult DeleteRating(RatingDto dto)
         {
-            Rating rating = _ratingRepository.GetById(ratingid);
-            if (rating == null)
+            int ratingId = GetRating(dto.MovieId, dto.UserId);
+
+
+            if (ratingId == -1)
             {
                 return BadRequest(new
                 {
                     message = "Invalid Rating ID"
                 });
             }
+
             // Todo: Add check if this failed
-            _ratingRepository.Remove(rating);
+            _ratingRepository.Remove(_ratingRepository.GetById(ratingId));
             return NoContent();
         }
     }
