@@ -237,7 +237,7 @@ namespace Ratings.Elefanti.Controllers
             {
                 Rating newRating = new Rating { Movie = movie, User = user, RatingNr = dto.Rating };
                 _ratingRepository.Create(newRating);
-                return Ok(newRating);
+                return Created("Success",newRating);
             }
             //Todo: validate rating
             //Todo: Check for failure
