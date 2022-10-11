@@ -118,7 +118,7 @@ namespace Ratings.Elefanti.Controllers
                 });
 
             }
-                return Ok(newMovies);
+            return Ok(newMovies);
         }
 
         [HttpGet("highest")]
@@ -145,7 +145,7 @@ namespace Ratings.Elefanti.Controllers
 
             List<object> highestWithGenres = new List<object>();
 
-           
+
             foreach (var movie in highestRated)
             {
                 // Get genres for each movie
@@ -354,7 +354,7 @@ namespace Ratings.Elefanti.Controllers
         {
             if (title == null)
             {
-                return GetMovies();
+                return null;
             }
             // Lowercase the query
             title = title.ToLower();
@@ -363,32 +363,66 @@ namespace Ratings.Elefanti.Controllers
             // Split keywords of title
             string[] keywords = title.Split(" ");
 
-            List<Movie> queriedMovies = new List<Movie>();
+            List<object> queriedMovies = new List<object>();
 
-            // Get all movies
-            var okResult = GetMovies();
-            var movies = ((IQueryable<object>)((OkObjectResult)okResult).Value).ToList();
+            // Get all rated movies
+            var allRatedMovies = (from movies in _db.Movies
+                                  from ratings in _db.Ratings
+                                  from users in _db.Users
+                                  where users.Id == ratings.User.Id
+                                  where movies.Id == ratings.Movie.Id
+                                  group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
+                                  select new
+                                  {
+                                      Id = grp.Key.Id,
+                                      Description = grp.Key.Description,
+                                      Length = grp.Key.Length,
+                                      Title = grp.Key.Title,
+                                      ReleaseDate = grp.Key.ReleaseDate,
+                                      Img = grp.Key.Img,
+                                      Rating = grp.Average(ratings => ratings.RatingNr)
+                                  }).ToList().Where(movie => movie.Title.ToLower().Contains(title)
+                                            || title.Contains(movie.Title.ToLower())
+                                            // Check if any of the movies contain any of the keywords
+                                            || keywords.Any(keyword => movie.Title.ToLower().Contains(keyword)));
 
-            foreach (Movie movie in movies)
+            List<object> completeDetails = new List<object>();
+
+
+            foreach (var movie in allRatedMovies)
             {
-                if (movie.Title.ToLower().Contains(title))
-                {
-                    queriedMovies.Add(movie);
-                    continue;
-                }
-                if (title.Contains(movie.Title.ToLower()))
-                {
-                    queriedMovies.Add(movie);
-                    continue;
-                }
+                // Get genres for each movie
+                var genreList = (from genres in _db.Genres
+                                 from movieGenres in _db.MovieGenres
+                                 where movieGenres.Genre.Id == genres.Id
+                                 where movieGenres.Movie.Id == movie.Id
+                                 select genres.GenreName).ToList();
 
-                // Check if any of the movies contain any of the keywords
-                if (keywords.Any(keyword => movie.Title.ToLower().Contains(keyword)))
+                // Get actors for each movie
+                var actorsList = (from movies in _db.Movies
+                                  from actor in _db.People
+                                  from movieActors in _db.MovieActors
+                                  where movies.Id == movie.Id
+                                  where movieActors.Actor.Id == actor.Id
+                                  where movieActors.Movie.Id == movies.Id
+                                  select actor).ToList();
+
+
+                // completeDetails the details for the movie
+                completeDetails.Add(new
                 {
-                    queriedMovies.Add(movie);
-                }
+                    Id = movie.Id,
+                    Description = movie.Description,
+                    Length = movie.Length,
+                    Title = movie.Title,
+                    ReleaseDate = movie.ReleaseDate,
+                    Img = movie.Img,
+                    Rating = double.Parse(String.Format("{0:#,0.00}", movie.Rating)),
+                    Genres = genreList,
+                    Actors = actorsList
+                });
             }
-            return Ok(queriedMovies);
+            return Ok(completeDetails);
         }
     }
 }
