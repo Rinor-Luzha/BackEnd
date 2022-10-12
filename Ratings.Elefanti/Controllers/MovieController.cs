@@ -30,14 +30,14 @@ namespace Ratings.Elefanti.Controllers
             _ratingRepository = ratingRepository;
         }
 
-        [HttpGet("details")]
-        public IActionResult GetMovie(int movieid)
+        [HttpGet("{id}")]
+        public IActionResult GetMovie(int id)
         {
             // Get movie by id together with it's rating
             var movieList = from movies in _db.Movies
                             from ratings in _db.Ratings
                             from users in _db.Users
-                            where movies.Id == movieid
+                            where movies.Id == id
                             where users.Id == ratings.User.Id
                             where movies.Id == ratings.Movie.Id
                             group ratings by new { movies.Id, movies.Description, movies.Length, movies.Title, movies.ReleaseDate, movies.Img } into grp
@@ -67,7 +67,7 @@ namespace Ratings.Elefanti.Controllers
             var genresList = (from movies in _db.Movies
                               from genres in _db.Genres
                               from movieGenres in _db.MovieGenres
-                              where movies.Id == movieid
+                              where movies.Id == id
                               where movieGenres.Genre.Id == genres.Id
                               where movieGenres.Movie.Id == movies.Id
                               select genres.GenreName).ToList();
@@ -77,7 +77,7 @@ namespace Ratings.Elefanti.Controllers
             var actorsList = (from movies in _db.Movies
                               from actor in _db.People
                               from movieActors in _db.MovieActors
-                              where movies.Id == movieid
+                              where movies.Id == id
                               where movieActors.Actor.Id == actor.Id
                               where movieActors.Movie.Id == movies.Id
                               select new { actor, movieActors.CharacterName }).ToList();
@@ -86,7 +86,7 @@ namespace Ratings.Elefanti.Controllers
             var writersList = (from movies in _db.Movies
                                from writer in _db.People
                                from movieWriters in _db.MovieWriters
-                               where movies.Id == movieid
+                               where movies.Id == id
                                where movieWriters.Writer.Id == writer.Id
                                where movieWriters.Movie.Id == movies.Id
                                select new { writer, movieWriters.Credit }).ToList();
@@ -95,12 +95,26 @@ namespace Ratings.Elefanti.Controllers
             var directorsList = (from movies in _db.Movies
                                  from people in _db.People
                                  from movieDirectors in _db.MovieDirectors
-                                 where movies.Id == movieid
+                                 where movies.Id == id
                                  where movieDirectors.Director.Id == people.Id
                                  where movieDirectors.Movie.Id == movies.Id
                                  select people).ToList();
 
-            // Concatenate the genres, actors, writers, and directors
+            // Get the queried movie comments
+            var commentsList = (from movies in _db.Movies
+                                from users in _db.Users
+                                from movieComments in _db.MovieComments
+                                where movies.Id == id
+                                where movieComments.Movie.Id == movies.Id
+                                where movieComments.User.Id == users.Id
+                                select new
+                                {
+                                    Id = movieComments.Id,
+                                    User = users,
+                                    Comment = movieComments.Comment
+                                }).ToList();
+
+            // Concatenate the genres, actors, writers, directors, and comments
             // of the movie to the original queried movie object
             var completeMovie = new
             {
@@ -114,7 +128,8 @@ namespace Ratings.Elefanti.Controllers
                 Genres = genresList,
                 Actors = actorsList,
                 Writers = writersList,
-                Directors = directorsList
+                Directors = directorsList,
+                Comments=commentsList
             };
             return Ok(completeMovie);
         }
