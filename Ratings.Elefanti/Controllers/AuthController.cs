@@ -23,6 +23,10 @@ namespace Ratings.Elefanti.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterDto dto)
         {
+            //if (dto.Name.Length < 2)
+            //{
+                
+            //}
             User user = new User
             {
                 Name = dto.Name,

@@ -134,25 +134,6 @@ namespace Ratings.Elefanti.Controllers
             return Ok(completeMovie);
         }
 
-        [HttpGet("comments")]
-        public IActionResult GetMovieComments(int movieid)
-        {
-            //ToDo: check if movieid is invalid
-            var commentsList = (from movies in _db.Movies
-                                from users in _db.Users
-                                from movieComments in _db.MovieComments
-                                where movies.Id == movieid
-                                where movieComments.Movie.Id == movies.Id
-                                where movieComments.User.Id == users.Id
-                                select new
-                                {
-                                    Id = movieComments.Id,
-                                    User = users,
-                                    Comment = movieComments.Comment
-                                }).ToList();
-            return Ok(commentsList);
-        }
-
         [HttpPost("comment")]
         public IActionResult PostMovieComment(CommentDto dto)
         {
