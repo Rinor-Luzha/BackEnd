@@ -23,10 +23,32 @@ namespace Ratings.Elefanti.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterDto dto)
         {
-            //if (dto.Name.Length < 2)
-            //{
-                
-            //}
+            if (dto.Name.Length <= 2)
+            {
+                return BadRequest(new { message = "The name has to be 3 characters or more" });
+            }
+
+            if (dto.Surname.Length <= 2)
+            {
+                return BadRequest(new { message = "The surname has to be 3 characters or more" });
+            }
+
+            if (!dto.Email.Contains("@"))
+            {
+                return BadRequest(new { message = "The email needs to have an @" });
+            }
+
+            if (dto.Password.Length < 6)
+            {
+                return BadRequest(new { message = "The password has to be at least 6 characters long" });
+            }
+
+            if (!dto.Password.Any(n => char.IsDigit(n)))
+            {
+                return BadRequest(new { message = "The password needs to have at least one number" });
+            }
+
+
             User user = new User
             {
                 Name = dto.Name,
