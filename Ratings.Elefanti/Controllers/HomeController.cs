@@ -49,12 +49,7 @@ namespace Ratings.Elefanti.Controllers
             // Get genres for each movie
             foreach (var movie in rated)
             {
-                var genresList = (from genres in _db.Genres
-                                  from movieGenres in _db.MovieGenres
-                                  where movieGenres.Genre.Id == genres.Id
-                                  where movieGenres.Movie.Id == movie.Id
-                                  select genres.GenreName).ToList();
-
+                var genresList = GetGenreList(movie.Id);
 
                 // Complete the details for the movie
                 ratedWithGenres.Add(new
@@ -88,20 +83,10 @@ namespace Ratings.Elefanti.Controllers
             foreach (Movie movie in ratedNewMovies)
             {
                 // Calculate average rating for each movie
-                var ratingList = (from ratings in _db.Ratings
-                                  where ratings.Movie.Id == movie.Id
-                                  group ratings by new { ratings.Movie.Id } into grp
-                                  select new
-                                  {
-                                      Rating = grp.Average(ratings => ratings.RatingNr)
-                                  }).ToList()[0];
+                double rating = GetAverageRatingList(movie.Id);
 
                 // Get genres for each movie
-                var genresList = (from genres in _db.Genres
-                                  from movieGenres in _db.MovieGenres
-                                  where movieGenres.Genre.Id == genres.Id
-                                  where movieGenres.Movie.Id == movie.Id
-                                  select genres.GenreName).ToList();
+                var genresList = GetGenreList(movie.Id);
 
 
                 // Complete the details for the movie
@@ -113,7 +98,7 @@ namespace Ratings.Elefanti.Controllers
                     Title = movie.Title,
                     ReleaseDate = movie.ReleaseDate,
                     Img = movie.Img,
-                    Rating = double.Parse(String.Format("{0:#,0.00}", ratingList.Rating)),
+                    Rating = double.Parse(String.Format("{0:#,0.00}", rating)),
                     Genres = genresList
                 });
 
@@ -149,21 +134,10 @@ namespace Ratings.Elefanti.Controllers
             foreach (var movie in highestRated)
             {
                 // Get genres for each movie
-                var genreList = (from genres in _db.Genres
-                                 from movieGenres in _db.MovieGenres
-                                 where movieGenres.Genre.Id == genres.Id
-                                 where movieGenres.Movie.Id == movie.Id
-                                 select genres.GenreName).ToList();
+                var genreList = GetGenreList(movie.Id);
 
                 // Get actors for each movie
-                var actorsList = (from movies in _db.Movies
-                                  from actor in _db.People
-                                  from movieActors in _db.MovieActors
-                                  where movies.Id == movie.Id
-                                  where movieActors.Actor.Id == actor.Id
-                                  where movieActors.Movie.Id == movies.Id
-                                  select actor).ToList();
-
+                var actorsList = GetActorsList(movie.Id);
 
                 // Complete the details for the movie
                 highestWithGenres.Add(new
@@ -244,12 +218,7 @@ namespace Ratings.Elefanti.Controllers
                 // Get genres for each movie
                 foreach (var movie in recommended)
                 {
-                    var genresList = (from genres in _db.Genres
-                                      from movieGenres in _db.MovieGenres
-                                      where movieGenres.Genre.Id == genres.Id
-                                      where movieGenres.Movie.Id == movie.Id
-                                      select genres.GenreName).ToList();
-
+                    var genresList = GetGenreList(movie.Id);
 
                     // Complete the details for the movie
                     recommendedWithGenres.Add(new
@@ -313,12 +282,7 @@ namespace Ratings.Elefanti.Controllers
                 // Get genres for each movie
                 foreach (var movie in recommended)
                 {
-                    var genresList = (from genres in _db.Genres
-                                      from movieGenres in _db.MovieGenres
-                                      where movieGenres.Genre.Id == genres.Id
-                                      where movieGenres.Movie.Id == movie.Id
-                                      select genres.GenreName).ToList();
-
+                    var genresList = GetGenreList(movie.Id);
 
                     // Complete the details for the movie
                     recommendedWithGenres.Add(new
@@ -354,7 +318,7 @@ namespace Ratings.Elefanti.Controllers
         {
             if (title == null)
             {
-                return null;
+                return Ok(new List<object>());
             }
             // Lowercase the query
             title = title.ToLower();
@@ -392,21 +356,10 @@ namespace Ratings.Elefanti.Controllers
             foreach (var movie in allRatedMovies)
             {
                 // Get genres for each movie
-                var genreList = (from genres in _db.Genres
-                                 from movieGenres in _db.MovieGenres
-                                 where movieGenres.Genre.Id == genres.Id
-                                 where movieGenres.Movie.Id == movie.Id
-                                 select genres.GenreName).ToList();
+                var genreList = GetGenreList(movie.Id);
 
                 // Get actors for each movie
-                var actorsList = (from movies in _db.Movies
-                                  from actor in _db.People
-                                  from movieActors in _db.MovieActors
-                                  where movies.Id == movie.Id
-                                  where movieActors.Actor.Id == actor.Id
-                                  where movieActors.Movie.Id == movies.Id
-                                  select actor).ToList();
-
+                var actorsList = GetActorsList(movie.Id);
 
                 // completeDetails the details for the movie
                 completeDetails.Add(new
@@ -424,5 +377,40 @@ namespace Ratings.Elefanti.Controllers
             }
             return Ok(completeDetails);
         }
+
+        // Helper methods
+        private List<string> GetGenreList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from genres in _db.Genres
+                    from movieGenres in _db.MovieGenres
+                    where movies.Id == movieId
+                    where movieGenres.Genre.Id == genres.Id
+                    where movieGenres.Movie.Id == movies.Id
+                    select genres.GenreName).ToList();
+
+        }
+        private object GetActorsList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from actor in _db.People
+                    from movieActors in _db.MovieActors
+                    where movies.Id == movieId
+                    where movieActors.Actor.Id == actor.Id
+                    where movieActors.Movie.Id == movies.Id
+                    select new { actor, movieActors.CharacterName }).ToList();
+        }
+
+        private double GetAverageRatingList(int movieId)
+        {
+            return (from ratings in _db.Ratings
+                    where ratings.Movie.Id == movieId
+                    group ratings by new { ratings.Movie.Id } into grp
+                    select new
+                    {
+                        Rating = grp.Average(ratings => ratings.RatingNr)
+                    }).ToList()[0].Rating;
+        }
+
     }
 }

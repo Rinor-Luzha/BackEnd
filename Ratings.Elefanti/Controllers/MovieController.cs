@@ -64,55 +64,20 @@ namespace Ratings.Elefanti.Controllers
             var movie = movieList.First();
 
             // Get the queried movie genres
-            var genresList = (from movies in _db.Movies
-                              from genres in _db.Genres
-                              from movieGenres in _db.MovieGenres
-                              where movies.Id == id
-                              where movieGenres.Genre.Id == genres.Id
-                              where movieGenres.Movie.Id == movies.Id
-                              select genres.GenreName).ToList();
+            var genresList = GetGenreList(movie.Id);
 
 
             // Get the queried movie actors
-            var actorsList = (from movies in _db.Movies
-                              from actor in _db.People
-                              from movieActors in _db.MovieActors
-                              where movies.Id == id
-                              where movieActors.Actor.Id == actor.Id
-                              where movieActors.Movie.Id == movies.Id
-                              select new { actor, movieActors.CharacterName }).ToList();
+            var actorsList = GetActorsList(movie.Id);
 
             // Get the queried movie writers
-            var writersList = (from movies in _db.Movies
-                               from writer in _db.People
-                               from movieWriters in _db.MovieWriters
-                               where movies.Id == id
-                               where movieWriters.Writer.Id == writer.Id
-                               where movieWriters.Movie.Id == movies.Id
-                               select new { writer, movieWriters.Credit }).ToList();
+            var writersList = GetWritersList(movie.Id);
 
             // Get the queried movie directors
-            var directorsList = (from movies in _db.Movies
-                                 from people in _db.People
-                                 from movieDirectors in _db.MovieDirectors
-                                 where movies.Id == id
-                                 where movieDirectors.Director.Id == people.Id
-                                 where movieDirectors.Movie.Id == movies.Id
-                                 select people).ToList();
+            var directorsList = GetDirectorsList(movie.Id);
 
             // Get the queried movie comments
-            var commentsList = (from movies in _db.Movies
-                                from users in _db.Users
-                                from movieComments in _db.MovieComments
-                                where movies.Id == id
-                                where movieComments.Movie.Id == movies.Id
-                                where movieComments.User.Id == users.Id
-                                select new
-                                {
-                                    Id = movieComments.Id,
-                                    User = users,
-                                    Comment = movieComments.Comment
-                                }).ToList();
+            var commentsList = GetCommentsList(movie.Id);
 
             // Concatenate the genres, actors, writers, directors, and comments
             // of the movie to the original queried movie object
@@ -129,7 +94,7 @@ namespace Ratings.Elefanti.Controllers
                 Actors = actorsList,
                 Writers = writersList,
                 Directors = directorsList,
-                Comments=commentsList
+                Comments = commentsList
             };
             return Ok(completeMovie);
         }
@@ -153,7 +118,7 @@ namespace Ratings.Elefanti.Controllers
                     message = "Invalid Movie ID"
                 });
             }
-            // Todo: Add check if this failed
+
             MovieComment movieComment = new MovieComment { Movie = movie, User = user, Comment = dto.Comment };
             _movieCommentRepository.Create(movieComment);
             return Created("Success", movieComment);
@@ -171,7 +136,6 @@ namespace Ratings.Elefanti.Controllers
             }
 
             movieComment.Comment = dto.Comment;
-            // Todo: Add check if this failed
             _movieCommentRepository.Update(movieComment);
             return Ok(movieComment);
         }
@@ -187,23 +151,8 @@ namespace Ratings.Elefanti.Controllers
                     message = "Invalid Comment ID"
                 });
             }
-
-            // Todo: Add check if this failed
             _movieCommentRepository.Remove(movieComment);
             return NoContent();
-        }
-        private int GetRating(int movieid, int userid)
-        {
-            var rating = (from ratings in _db.Ratings
-                          where ratings.User.Id == userid
-                          where ratings.Movie.Id == movieid
-                          select ratings).ToList();
-            if (rating.Count == 0)
-            {
-                return -1;
-
-            }
-            return rating[0].Id;
         }
 
 
@@ -233,19 +182,17 @@ namespace Ratings.Elefanti.Controllers
             {
                 Rating newRating = new Rating { Movie = movie, User = user, RatingNr = dto.Rating };
                 _ratingRepository.Create(newRating);
-                return Created("Success",newRating);
+                return Created("Success", newRating);
             }
-            //Todo: validate rating
-            //Todo: Check for failure
+
+            // If a rating by this user for the specified movie exists, just edit the rating number
             return ChangeRating(dto);
         }
 
         [HttpPut("rating")]
         public IActionResult ChangeRating(RatingDto dto)
         {
-
             int ratingId = GetRating(dto.MovieId, dto.UserId);
-
 
             if (ratingId == -1)
             {
@@ -258,7 +205,6 @@ namespace Ratings.Elefanti.Controllers
             Rating oldRating = _ratingRepository.GetById(ratingId);
             oldRating.RatingNr = dto.Rating;
 
-            // Todo: Add check if this failed
             _ratingRepository.Update(oldRating);
             return Ok(oldRating);
         }
@@ -277,9 +223,81 @@ namespace Ratings.Elefanti.Controllers
                 });
             }
 
-            // Todo: Add check if this failed
             _ratingRepository.Remove(_ratingRepository.GetById(ratingId));
             return NoContent();
         }
+
+        // Helper methods
+        private int GetRating(int movieid, int userid)
+        {
+            var rating = (from ratings in _db.Ratings
+                          where ratings.User.Id == userid
+                          where ratings.Movie.Id == movieid
+                          select ratings).ToList();
+            if (rating.Count == 0)
+            {
+                return -1;
+
+            }
+            return rating[0].Id;
+        }
+        private List<string> GetGenreList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from genres in _db.Genres
+                    from movieGenres in _db.MovieGenres
+                    where movies.Id == movieId
+                    where movieGenres.Genre.Id == genres.Id
+                    where movieGenres.Movie.Id == movies.Id
+                    select genres.GenreName).ToList();
+
+        }
+        private object GetActorsList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from actor in _db.People
+                    from movieActors in _db.MovieActors
+                    where movies.Id == movieId
+                    where movieActors.Actor.Id == actor.Id
+                    where movieActors.Movie.Id == movies.Id
+                    select new { actor, movieActors.CharacterName }).ToList();
+        }
+        private object GetWritersList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from writer in _db.People
+                    from movieWriters in _db.MovieWriters
+                    where movies.Id == movieId
+                    where movieWriters.Writer.Id == writer.Id
+                    where movieWriters.Movie.Id == movies.Id
+                    select new { writer, movieWriters.Credit }).ToList();
+        }
+
+        private object GetDirectorsList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from people in _db.People
+                    from movieDirectors in _db.MovieDirectors
+                    where movies.Id == movieId
+                    where movieDirectors.Director.Id == people.Id
+                    where movieDirectors.Movie.Id == movies.Id
+                    select people).ToList();
+        }
+        private object GetCommentsList(int movieId)
+        {
+            return (from movies in _db.Movies
+                    from users in _db.Users
+                    from movieComments in _db.MovieComments
+                    where movies.Id == movieId
+                    where movieComments.Movie.Id == movies.Id
+                    where movieComments.User.Id == users.Id
+                    select new
+                    {
+                        Id = movieComments.Id,
+                        User = users,
+                        Comment = movieComments.Comment
+                    }).ToList();
+        }
+
     }
 }
