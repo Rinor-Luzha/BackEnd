@@ -185,7 +185,7 @@ namespace Ratings.Elefanti.Controllers
                 return Created("Success", newRating);
             }
 
-            // If a rating by this user for the specified movie exists, just edit the rating
+            // If a rating by this user for the specified movie exists just edit the rating
             return ChangeRating(dto);
         }
 
