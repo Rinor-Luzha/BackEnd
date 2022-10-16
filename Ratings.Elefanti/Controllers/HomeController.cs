@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace Ratings.Elefanti.Controllers
 {
     [ApiController]
-    [Route("/home")]
+    [Route("/api/home")]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _db;

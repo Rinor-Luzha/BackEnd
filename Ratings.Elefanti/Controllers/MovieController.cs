@@ -11,7 +11,7 @@ using System.Xml;
 namespace Ratings.Elefanti.Controllers
 {
     [ApiController]
-    [Route("/movie")]
+    [Route("/api/movie")]
     public class MovieController : Controller
     {
 
