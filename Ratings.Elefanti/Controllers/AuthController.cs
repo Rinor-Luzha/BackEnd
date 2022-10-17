@@ -12,10 +12,10 @@ namespace Ratings.Elefanti.Controllers
     [Route("/api/account")]
     public class AuthController : Controller
     {
-        private readonly UserRepository _repository;
+        private readonly IUserRepository _repository;
 
         private readonly JwtService _jwtService;
-        public AuthController(UserRepository UserRepository, JwtService JwtService)
+        public AuthController(IUserRepository UserRepository, JwtService JwtService)
         {
             _repository = UserRepository;
             _jwtService = JwtService;

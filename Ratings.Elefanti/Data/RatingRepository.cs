@@ -2,7 +2,7 @@
 
 namespace Ratings.Elefanti.Data
 {
-    public class RatingRepository
+    public class RatingRepository : IRatingRepository
     {
 
         private readonly ApplicationDbContext _db;

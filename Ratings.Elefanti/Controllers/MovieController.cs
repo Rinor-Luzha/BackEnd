@@ -15,13 +15,13 @@ namespace Ratings.Elefanti.Controllers
     public class MovieController : Controller
     {
 
-        private readonly ApplicationDbContext _db;
-        private readonly MovieRepository _movieRepository;
-        private readonly UserRepository _userRepository;
-        private readonly MovieCommentRepository _movieCommentRepository;
-        private readonly RatingRepository _ratingRepository;
+        private readonly IApplicationDbContext _db;
+        private readonly IMovieRepository _movieRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IMovieCommentRepository _movieCommentRepository;
+        private readonly IRatingRepository _ratingRepository;
 
-        public MovieController(ApplicationDbContext db, MovieRepository movieRepository, UserRepository userRepository, MovieCommentRepository movieCommentRepository, RatingRepository ratingRepository)
+        public MovieController(IApplicationDbContext db, IMovieRepository movieRepository, IUserRepository userRepository, IMovieCommentRepository movieCommentRepository, IRatingRepository ratingRepository)
         {
             _db = db;
             _movieRepository = movieRepository;

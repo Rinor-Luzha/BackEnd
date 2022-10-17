@@ -2,7 +2,7 @@
 
 namespace Ratings.Elefanti.Data
 {
-    public class MovieCommentRepository
+    public class MovieCommentRepository : IMovieCommentRepository
     {
         private readonly ApplicationDbContext _db;
         public MovieCommentRepository(ApplicationDbContext db)

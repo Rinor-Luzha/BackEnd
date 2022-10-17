@@ -3,7 +3,7 @@ using Microsoft.Identity.Client;
 using Ratings.Elefanti.Models;
 
 namespace Ratings.Elefanti.Data;
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     private readonly IConfiguration _configuration;
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)

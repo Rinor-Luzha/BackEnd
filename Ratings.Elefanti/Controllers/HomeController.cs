@@ -11,9 +11,9 @@ namespace Ratings.Elefanti.Controllers
     [Route("/api/home")]
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IApplicationDbContext _db;
 
-        public HomeController(ApplicationDbContext db)
+        public HomeController(IApplicationDbContext db)
         {
             _db = db;
 
